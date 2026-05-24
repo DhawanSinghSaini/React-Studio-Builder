@@ -1,0 +1,52 @@
+/* ═══════════════════════════════════════════════════════════
+   App.css
+   Single source of truth for html/body/#root layout.
+   Studio.css no longer touches these — it scopes to
+   body.mode-studio only.
+═══════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── HOME: full page, scrollable ─────────────────────────── */
+html.mode-home,
+html.mode-home body {
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+html.mode-home body #root {
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  overflow: visible;
+}
+
+/* ── STUDIO: locked viewport, no scroll ──────────────────── */
+html.mode-studio,
+html.mode-studio body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+html.mode-studio body #root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
