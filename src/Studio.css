@@ -1,0 +1,397 @@
+/* ── Reset ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Studio-mode lock — scoped so Home is NOT affected ── */
+body.mode-studio,
+body.mode-studio #root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #09090d;
+  color: #fff;
+  font-size: 13px;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* ── Shell ─────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TOP STRIP
+═══════════════════════════════════════════════════════════ */
+.top-strip {
+  height: 48px;
+  flex-shrink: 0;
+  background: #0b0c10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 0;
+  z-index: 200;
+  overflow: hidden;
+}
+
+/* Brand */
+.ts-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.ts-brand-mark {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #fff;
+}
+.ts-brand-name {
+  font-size: 13px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.78);
+}
+.ts-brand-ver {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(99, 102, 241, 0.7);
+  background: rgba(99, 102, 241, 0.12);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* Divider */
+.ts-divider {
+  width: 1px;
+  height: 20px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0 9px;
+}
+
+/* ── Generic top-bar button ─────────────────────────────── */
+.ts-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition:
+    background 0.14s,
+    color 0.14s,
+    border-color 0.14s;
+  white-space: nowrap;
+  user-select: none;
+}
+.ts-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+.ts-btn:active {
+  transform: scale(0.96);
+}
+.ts-btn.on {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.32);
+  color: #a5b4fc;
+}
+.ts-btn.on:hover {
+  background: rgba(99, 102, 241, 0.22);
+}
+
+/* ── Component strip ────────────────────────────────────── */
+.ts-comp-strip {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+.ts-comp-strip::-webkit-scrollbar {
+  height: 3px;
+}
+.ts-comp-strip::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* ── Horizontal Toolbar (lives inside ts-comp-strip) ─────── */
+.toolbar-horiz {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 4px;
+  min-width: max-content;
+  gap: 0;
+}
+.toolbar-horiz-group {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 8px;
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+.toolbar-horiz-group:last-child {
+  border-right: none;
+}
+.toolbar-horiz-label {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding-right: 5px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  opacity: 0.45;
+}
+
+/* Component pill button */
+.h-lib-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 9px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: inherit;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  user-select: none;
+  transition:
+    background 0.13s,
+    border-color 0.13s,
+    color 0.13s,
+    transform 0.1s;
+}
+.h-lib-btn:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+}
+.h-lib-btn:active {
+  transform: scale(0.94);
+  background: rgba(255, 255, 255, 0.15);
+}
+.h-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Zoom controls ──────────────────────────────────────── */
+.ts-zoom {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.ts-zoom-btn {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  transition:
+    background 0.13s,
+    color 0.13s,
+    border-color 0.13s;
+}
+.ts-zoom-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.ts-zoom-btn:active {
+  transform: scale(0.9);
+}
+
+.ts-zoom-label {
+  min-width: 40px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.ts-zoom-select {
+  height: 28px;
+  padding: 0 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 10px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  text-align: center;
+  min-width: 50px;
+  transition:
+    background 0.13s,
+    color 0.13s;
+}
+.ts-zoom-select:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.ts-zoom-select option {
+  background: #181920;
+}
+
+/* ── Export button ──────────────────────────────────────── */
+.ts-export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 7px;
+  flex-shrink: 0;
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #c7d2fe;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    background 0.14s,
+    border-color 0.14s,
+    color 0.14s;
+  white-space: nowrap;
+  user-select: none;
+}
+.ts-export-btn:hover {
+  background: rgba(99, 102, 241, 0.32);
+  border-color: rgba(99, 102, 241, 0.6);
+  color: #fff;
+}
+.ts-export-btn:active {
+  transform: scale(0.96);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SIDE PANELS
+═══════════════════════════════════════════════════════════ */
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.side-panel-left {
+  width: 220px;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+.side-panel-right {
+  width: 320px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Ensure inspector body bottom padding is always generous */
+.side-panel-right .inspector-body {
+  padding-bottom: 60px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INFINITE CANVAS
+═══════════════════════════════════════════════════════════ */
+.canvas-vp {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.canvas-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.canvas-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform-origin: 0 0;
+  will-change: transform;
+  padding: 160px;
+}
+
+.canvas-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 10;
+  letter-spacing: 0.03em;
+}
