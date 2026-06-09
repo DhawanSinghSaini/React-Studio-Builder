@@ -1,0 +1,651 @@
+/* ═══════════════════════════════════════════════════
+   Inspector.css  –  mirrors Toolbar.css exactly
+   Same bg, border, font sizes, spacing language.
+═══════════════════════════════════════════════════ */
+
+.inspector-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0e0f14; /* identical to .toolbar-wrapper */
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* ── Header (matches .toolbar-header) ───────────────── */
+.inspector-header {
+  flex-shrink: 0;
+  padding: 20px 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inspector-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.inspector-type-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspector-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.inspector-type-name {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.06em;
+}
+
+.inspector-id {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.18);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.inspector-delete-btn {
+  background: rgba(239, 68, 68, 0.08);
+  color: rgba(239, 68, 68, 0.5);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 6px;
+  padding: 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
+}
+.inspector-delete-btn:hover {
+  background: rgba(239, 68, 68, 0.18);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+/* ── Tab bar (matches .toolbar-stats style) ──────────── */
+.inspector-tabs {
+  display: flex;
+  gap: 0;
+  margin-top: 0;
+}
+
+.inspector-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 9px 4px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+  margin-bottom: -1px;
+}
+.inspector-tab:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+.inspector-tab.active {
+  color: #fff;
+  border-bottom-color: currentColor;
+}
+
+/* ── Scrollable body (matches .toolbar-body) ─────────── */
+.inspector-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px 14px 60px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+.inspector-body::-webkit-scrollbar {
+  width: 4px;
+}
+.inspector-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* ── Section (matches .section-group) ───────────────── */
+.ip-section {
+  margin-bottom: 4px;
+}
+
+.ip-section-trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 2px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color 0.15s;
+}
+.ip-section-trigger:hover {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.ip-section-trigger-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ip-section-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ip-section-body {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+/* ── Field wrapper ───────────────────────────────────── */
+.ip-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ip-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── 2-col grid row ──────────────────────────────────── */
+.ip-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.ip-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.ip-row-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+/* ── Base input / select / textarea (mirrors .search-input) */
+.ip-input,
+.ip-select,
+.ip-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #fff;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.ip-input:focus,
+.ip-select:focus,
+.ip-textarea:focus {
+  border-color: rgba(99, 102, 241, 0.45);
+  background: rgba(99, 102, 241, 0.05);
+}
+.ip-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='rgba(255,255,255,0.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.ip-select option {
+  background: #181920;
+}
+.ip-textarea {
+  resize: vertical;
+  min-height: 64px;
+  line-height: 1.5;
+}
+
+/* ── Unit input (number + unit dropdown fused) ───────── */
+.ip-unit-wrap {
+  display: flex;
+  width: 100%;
+}
+.ip-unit-num {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 8px 8px;
+  color: #fff;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.ip-unit-num:focus {
+  border-color: rgba(99, 102, 241, 0.45);
+}
+.ip-unit-sel {
+  width: 48px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0 8px 8px 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  font-family: inherit;
+  font-weight: 800;
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.15s;
+}
+.ip-unit-sel:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ip-unit-sel option {
+  background: #181920;
+}
+
+/* ── Color field ──────────────────────────────────────── */
+.ip-color-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ip-color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.ip-color-swatch input[type="color"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+}
+.ip-color-hex {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+}
+.ip-color-hex:focus {
+  border-color: rgba(99, 102, 241, 0.45);
+}
+
+/* ── Toggle group (align / flex direction) ───────────── */
+.ip-toggle-group {
+  display: flex;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+.ip-toggle-btn {
+  flex: 1;
+  padding: 6px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  transition:
+    background 0.12s,
+    color 0.12s;
+}
+.ip-toggle-btn:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+.ip-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ── Chip badges ──────────────────────────────────────── */
+.ip-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.ip-chip {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.35);
+  transition:
+    background 0.12s,
+    border-color 0.12s,
+    color 0.12s;
+  white-space: nowrap;
+}
+.ip-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.65);
+}
+.ip-chip.active {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
+}
+
+/* ── Range slider ─────────────────────────────────────── */
+.ip-range-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ip-range {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+}
+.ip-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.ip-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+.ip-range-val {
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.3);
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── Spacing box (padding T/R/B/L visual) ────────────── */
+.ip-spacing-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px;
+}
+.ip-spacing-grid {
+  display: grid;
+  grid-template-columns: 1fr 56px 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 4px;
+  align-items: center;
+}
+.ip-spacing-top {
+  grid-column: 2;
+  grid-row: 1;
+}
+.ip-spacing-left {
+  grid-column: 1;
+  grid-row: 2;
+}
+.ip-spacing-center {
+  grid-column: 2;
+  grid-row: 2;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px dashed rgba(99, 102, 241, 0.25);
+  border-radius: 5px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ip-spacing-center-label {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgba(99, 102, 241, 0.5);
+  letter-spacing: 0.06em;
+}
+.ip-spacing-right {
+  grid-column: 3;
+  grid-row: 2;
+}
+.ip-spacing-bottom {
+  grid-column: 2;
+  grid-row: 3;
+}
+.ip-sp-input {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 5px 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.65);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.ip-sp-input:focus {
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* ── Shadow preview box ──────────────────────────────── */
+.ip-shadow-preview {
+  height: 34px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-bottom: 4px;
+  transition: box-shadow 0.2s;
+}
+
+/* ── Separator ───────────────────────────────────────── */
+.ip-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 4px 0 8px;
+}
+
+/* ── Empty / no selection state ──────────────────────── */
+.inspector-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.15);
+  padding: 32px 20px;
+  text-align: center;
+}
+.inspector-empty svg {
+  opacity: 0.3;
+}
+.inspector-empty p {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.8;
+}
+
+/* ── Container message (no content fields) ───────────── */
+.ip-container-note {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1.7;
+  padding: 4px 0;
+  font-weight: 400;
+}
+
+/* ── Text decoration button row ──────────────────────── */
+.ip-deco-row {
+  display: flex;
+  gap: 4px;
+}
+.ip-deco-btn {
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  transition:
+    background 0.12s,
+    color 0.12s;
+}
+.ip-deco-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ip-deco-btn.active {
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
+}
+/* ── Grid column/row number picker ──────────────── */
+.ip-grid-picker {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+.ip-grid-pick-btn {
+  flex: 1;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    background 0.12s,
+    border-color 0.12s,
+    color 0.12s,
+    transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ip-grid-pick-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ip-grid-pick-btn:active {
+  transform: scale(0.93);
+}
+.ip-grid-pick-btn.active {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #a5b4fc;
+}
+
+/* ── Grid cell placement visual grid ─────────────── */
+.ip-grid-cells {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.ip-grid-cell-btn {
+  padding: 7px 3px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  transition:
+    background 0.12s,
+    border-color 0.12s,
+    color 0.12s;
+}
+.ip-grid-cell-btn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+.ip-grid-cell-btn.active {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #a5b4fc;
+}
